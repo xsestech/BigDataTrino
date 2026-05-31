@@ -66,3 +66,38 @@
 3. Инструкция, как запускать Trino-скрипты для проверки лабораторной работы.
 4. Код Trino трансформации данных из исходной модели в снежинку/звезду в ClickHouse.
 5. Код Trino трансформации данных из снежинки/звезды в отчеты в ClickHouse.
+
+---
+
+### Как запускать
+
+```bash
+make up        
+make down 
+```
+
+Доступы после `make up`:
+
+| Сервис          | Адрес                   | Логин/пароль                    |
+|-----------------|-------------------------|---------------------------------|
+| Trino UI        | http://localhost:8080   | пользователь `admin`            |
+| ClickHouse HTTP | http://localhost:8123   | `admin` / `admin`               |
+| PostgreSQL      | `localhost:5432`        | `admin` / `admin`, база `sales` |
+
+
+
+## ETL
+### Трансформация в снежинку
+
+```bash
+make snowflake 
+```
+
+Либо в DBeaver (Trino-соединение, `localhost:8080`) выполнить сначала `01_snowflake_ddl.sql`, затем `02_snowflake_load.sql`.
+
+
+### Отчёты
+```bash
+make reports
+```
+Либо в DBeaver выполнить сначала`03_reports_ddl.sql`, затем `04_reports_load.sql`.
